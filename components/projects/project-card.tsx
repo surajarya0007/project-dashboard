@@ -21,7 +21,7 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
       }}
       onClick={onClick}
     >
-      {/* Project Image with Overlay */}
+      { }
       <div className="relative h-48 overflow-hidden transition-all duration-500 group-hover:h-24">
         <Image
           src={project.images[0] || "/placeholder.svg"}
@@ -63,14 +63,14 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
         </div>
       </div>
 
-      {/* Project Content */}
+      { }
       <div className="p-6 flex-grow flex flex-col relative overflow-hidden">
         <div className="mb-2 text-sm text-gray-400">{project.date}</div>
         <p className="text-gray-300 mb-4 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
           {project.description}
         </p>
 
-        {/* Long description that appears on hover */}
+        { }
         <div className="absolute inset-0 p-6 pt-10 bg-black/90 translate-y-full group-hover:translate-y-0 transition-transform duration-500 overflow-y-auto max-h-full">
           <p className="text-gray-300 text-sm mb-4">{project.longDescription}</p>
           <ul className="space-y-2 text-gray-400 text-sm list-disc list-inside mb-4">

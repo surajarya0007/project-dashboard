@@ -41,7 +41,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           exit={{ scale: 0.9, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Header */}
+          { }
           <div className="flex justify-between items-center p-4 md:p-6 border-b border-neutral-800">
             <div>
               <h2 className="text-xl md:text-2xl font-bold text-white">{project.name}</h2>
@@ -55,7 +55,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             </button>
           </div>
 
-          {/* Tabs */}
+          { }
           <div className="flex gap-2 md:gap-4 px-4 md:px-6 pt-4 border-b border-neutral-800 overflow-x-auto">
             {(["overview", "gallery", "tech"] as const).map((tab) => (
               <button
@@ -72,7 +72,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             ))}
           </div>
 
-          {/* Content */}
+          { }
           <div className="flex-1 overflow-y-auto p-4 md:p-6">
             {activeTab === "overview" && (
               <div className="space-y-6">

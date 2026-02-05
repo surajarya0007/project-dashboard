@@ -43,7 +43,7 @@ export function OverviewView() {
         }
         
         if (eventsData) {
-            // Process events for ticker
+            
             const pushEvents = eventsData.filter((e: GithubEvent) => e.type === "PushEvent");
             const recentCommits = pushEvents.flatMap((e: GithubEvent) => 
                 e.payload.commits?.map(c => ({
@@ -56,9 +56,9 @@ export function OverviewView() {
 
         if (contributionsData) {
             setHeatmapData(contributionsData.contributions);
-            // Sum of commits from the last year total provided by API
+            
             const lastYearTotal = Object.values(contributionsData.total).reduce((a, b) => a + b, 0); 
-            // The API returns { "2024": 123, "lastYear": 456 }. "lastYear" is what we want usually or current year.
+            
             setTotalCommits(contributionsData.total.lastYear || lastYearTotal);
         }
 
@@ -80,7 +80,7 @@ export function OverviewView() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Left Column: Profile (Spans 2 rows) */}
+        { }
         <div className="md:col-span-1 md:row-span-2 h-full min-h-[500px]">
             <IdentityCard 
                 name={profile?.name || "Suraj"}
@@ -91,7 +91,7 @@ export function OverviewView() {
             />
         </div>
 
-        {/* Right Column Top: Vitals */}
+        { }
         <div className="md:col-span-2 h-[280px]">
             <GithubVitals 
                 languageData={languageData.length > 0 ? languageData : undefined}
@@ -101,7 +101,7 @@ export function OverviewView() {
             />
         </div>
 
-        {/* Right Column Bottom: Heatmap */}
+        { }
         <div className="md:col-span-2 h-[200px]">
              <ActivityHeatmap 
                 data={heatmapData} 
@@ -109,7 +109,7 @@ export function OverviewView() {
              />
         </div>
 
-        {/* Row 3: Terminal */}
+        { }
         <div className="md:col-span-3 h-[300px]">
             <TerminalWidget />
         </div>

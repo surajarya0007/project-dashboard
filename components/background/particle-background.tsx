@@ -22,7 +22,7 @@ const hexToRgb = (hex: string) => {
   return [r, g, b];
 };
 
-const vertex = /* glsl */ `
+const vertex =   `
   attribute vec3 position;
   attribute vec4 random;
   attribute vec3 color;
@@ -65,7 +65,7 @@ const vertex = /* glsl */ `
   }
 `;
 
-const fragment = /* glsl */ `
+const fragment =   `
   precision highp float;
   
   uniform float uTime;
@@ -133,7 +133,7 @@ export function Particles({
       alpha: true
     });
     const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0); // Transparent background
+    gl.clearColor(0, 0, 0, 0); 
     gl.canvas.style.display = 'block';
     gl.canvas.style.position = 'absolute';
     gl.canvas.style.top = '0';
@@ -171,17 +171,17 @@ export function Particles({
     const palette = particleColors && particleColors.length > 0 ? particleColors : defaultColors;
 
     for (let i = 0; i < count; i++) {
-      // Gaussian distribution for center-dense particle clustering
-      // Using Box-Muller transform for normal distribution
+      
+      
       const u1 = Math.random();
       const u2 = Math.random();
       const gaussianX = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
       const gaussianY = Math.sqrt(-2 * Math.log(u1)) * Math.sin(2 * Math.PI * u2);
       
-      // Scale Gaussian to desired spread (more particles in center, fewer at edges)
-      const x = gaussianX * 3; // Horizontal spread
-      const y = gaussianY * 4; // Vertical spread
-      const z = (Math.random() - 0.5) * 3; // Uniform Z depth
+      
+      const x = gaussianX * 3; 
+      const y = gaussianY * 4; 
+      const z = (Math.random() - 0.5) * 3; 
       
       positions.set([x, y, z], i * 3);
       randoms.set([Math.random(), Math.random(), Math.random(), Math.random()], i * 4);

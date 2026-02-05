@@ -20,7 +20,7 @@ const defaultLanguageData = [
 ];
 
 export function GithubVitals({ languageData = defaultLanguageData, commits = [], totalCommits = 1842, publicRepos = 142 }: GithubVitalsProps) {
-  // Assign colors to data
+  
   const dataWithColors = languageData.map((item, index) => ({
       ...item,
       color: COLORS[index % COLORS.length]
@@ -37,7 +37,7 @@ export function GithubVitals({ languageData = defaultLanguageData, commits = [],
       </div>
 
       <div className="flex-1 flex flex-col md:flex-row gap-6 items-center">
-        {/* Language Chart */}
+        { }
         <div className="h-40 w-40 relative flex-shrink-0">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -65,7 +65,7 @@ export function GithubVitals({ languageData = defaultLanguageData, commits = [],
           </div>
         </div>
 
-        {/* Stats & Commits */}
+        { }
         <div className="flex-1 space-y-4 w-full min-w-0">
             <div className="grid grid-cols-2 gap-2">
                 <div className="bg-white/5 p-3 rounded-xl border border-white/5">

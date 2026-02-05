@@ -66,7 +66,7 @@ export async function getGithubEvents(): Promise<GithubEvent[]> {
   }
 }
 
-// ... existing imports
+
 
 export interface GithubContributionDay {
   date: string;
@@ -82,7 +82,7 @@ export interface GithubContributions {
   contributions: GithubContributionDay[];
 }
 
-// Fetch contribution data from third-party API
+
 export async function getGithubContributions(): Promise<GithubContributions | null> {
     try {
         const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${USERNAME}?y=last`);
@@ -94,7 +94,7 @@ export async function getGithubContributions(): Promise<GithubContributions | nu
     }
 }
 
-// Process repos to generate Tech Stack Radar data
+
 export function processTechStackData(repos: GithubRepo[]) {
     const categories: Record<string, number> = {
         Frontend: 0,
@@ -105,29 +105,29 @@ export function processTechStackData(repos: GithubRepo[]) {
         Design: 0
     };
 
-    // Dictionary mapping languages/topics to categories
+    
     const map = {
-        // Frontend
+        
         TypeScript: 'Frontend', JavaScript: 'Frontend', HTML: 'Frontend', CSS: 'Frontend', Vue: 'Frontend', React: 'Frontend', Svelte: 'Frontend',
-        // Backend
+        
         Python: 'Backend', Go: 'Backend', Java: 'Backend', PHP: 'Backend', Ruby: 'Backend', 'C#': 'Backend', Rust: 'Backend', 'C++': 'Backend', C: 'Backend',
-        // Mobile
+        
         Swift: 'Mobile', Kotlin: 'Mobile', Dart: 'Mobile', Flutter: 'Mobile',
-        // Data
+        
         'Jupyter Notebook': 'Data', R: 'Data', SQL: 'Data', PLSQL: 'Data',
-        // DevOps
+        
         Shell: 'DevOps', Dockerfile: 'DevOps', Makefile: 'DevOps', HCL: 'DevOps', PowerShell: 'DevOps',
-        // Design usually isn't a language, but maybe CSS? Let's give Design some points if CSS/HTML is high or just hardcode a baseline.
+        
     };
 
     repos.forEach(repo => {
         if (repo.language && map[repo.language as keyof typeof map]) {
             const cat = map[repo.language as keyof typeof map];
-            categories[cat as keyof typeof categories] += repo.stargazers_count + 10; // Base score + stars
+            categories[cat as keyof typeof categories] += repo.stargazers_count + 10; 
         }
     });
 
-    // Normalize to 150 scale roughly
+    
     const maxScore = Math.max(...Object.values(categories), 1);
     
     return Object.keys(categories).map(subject => ({
@@ -137,7 +137,7 @@ export function processTechStackData(repos: GithubRepo[]) {
     }));
 }
 
-// Helper to process language data from repos
+
 export function processLanguageData(repos: GithubRepo[]) {
   const languages: Record<string, number> = {};
   
@@ -147,9 +147,9 @@ export function processLanguageData(repos: GithubRepo[]) {
     }
   });
 
-  // Convert to array and sort
+  
   return Object.entries(languages)
     .map(([name, value]) => ({ name, value }))
     .sort((a, b) => b.value - a.value)
-    .slice(0, 5); // Top 5
+    .slice(0, 5); 
 }

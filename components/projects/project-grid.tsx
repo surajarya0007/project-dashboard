@@ -15,7 +15,7 @@ export function ProjectGrid() {
 
   return (
     <>
-      {/* Filter Buttons - Sticky */}
+      { }
       <div className="sticky top-0 z-10 py-2 md:py-3 mb-6">
         <div className="flex justify-center px-4">
           <div className="flex gap-3 flex-wrap backdrop-blur-sm saturate-200  p-3 rounded-full shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_0_0_1px_rgba(255,255,255,0.1)] shadow-lg">
@@ -45,7 +45,7 @@ export function ProjectGrid() {
         </div>
       </div>
 
-      {/* Projects Grid */}
+      { }
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {filteredProjects.map((project, index) => (
           <ProjectCard
@@ -57,7 +57,7 @@ export function ProjectGrid() {
         ))}
       </div>
 
-      {/* Project Modal */}
+      { }
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </>
   );

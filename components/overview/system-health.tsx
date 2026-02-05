@@ -12,7 +12,7 @@ export function SystemHealth() {
   });
 
   useEffect(() => {
-    // Calculate basic performance metrics
+    
     if (typeof window !== "undefined") {
         const navEntry = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming;
         if (navEntry) {
@@ -23,8 +23,8 @@ export function SystemHealth() {
             }));
         }
 
-        // Simple mock FPS counter or real one if needed, but for now fixed high is okay or simple estimator
-        // Let's stick to 60 for UI smoothness unless we really measure frame times
+        
+        
     }
   }, []);
 
@@ -42,7 +42,7 @@ export function SystemHealth() {
       </div>
 
       <div className="flex-1 space-y-6">
-        {/* Real Performance Scores */}
+        { }
          <div className="grid grid-cols-3 gap-2">
             <div className="bg-white/5 rounded-xl p-3 flex flex-col items-center justify-center border border-white/5">
                 <div className="text-green-400 font-bold text-xl mb-1">{metrics.loadTime > 0 ? metrics.loadTime : "--"}</div>
@@ -58,7 +58,7 @@ export function SystemHealth() {
             </div>
         </div>
 
-        {/* Deployment Status */}
+        { }
         <div className="space-y-3">
             <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/5">
                 <div className="flex items-center gap-3">

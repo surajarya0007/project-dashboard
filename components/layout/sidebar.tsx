@@ -21,12 +21,12 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
 
   const handleNavigation = (view: string) => {
     onNavigate(view);
-    setIsMobileMenuOpen(false); // Close menu after navigation on mobile
+    setIsMobileMenuOpen(false); 
   };
 
   return (
     <>
-      {/* Mobile Menu Button */}
+      { }
       <button
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         className="fixed top-4 left-4 z-50 p-2 bg-neutral-800 rounded-lg md:hidden"
@@ -38,7 +38,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
         )}
       </button>
 
-      {/* Overlay for mobile */}
+      { }
       {isMobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
@@ -46,15 +46,15 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
         />
       )}
 
-      {/* Sidebar */}
+      { }
       <aside
         className={cn(
           "fixed left-0 top-0 z-40 h-screen w-64 border-r border-neutral-800 bg-black transition-transform duration-300",
-          "md:translate-x-0", // Always visible on desktop
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full" // Toggle on mobile
+          "md:translate-x-0", 
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full" 
         )}
       >
-        {/* Brand */}
+        { }
         <div className="flex h-16 items-center border-b border-neutral-800 px-6">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-black to-[#cf005d]" />
@@ -62,7 +62,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
           </div>
         </div>
 
-        {/* Navigation */}
+        { }
         <nav className="space-y-1 p-4">
           {navItems.map((item) => (
             <button
@@ -81,7 +81,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
           ))}
         </nav>
 
-        {/* User Info */}
+        { }
         <div className="absolute bottom-0 left-0 right-0 border-t border-neutral-800 p-4">
           <a
             href="https://suraj-cyan.vercel.app/"

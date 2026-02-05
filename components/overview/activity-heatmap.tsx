@@ -14,16 +14,16 @@ export function ActivityHeatmap({ data, total }: ActivityHeatmapProps) {
     const weeksToDisplay = 53;
     const daysToDisplay = weeksToDisplay * 7;
     
-    // Ensure we have at least 371 days of data or pad with empty
+    
     const recentData = data ? data.slice(-daysToDisplay) : Array(daysToDisplay).fill({ count: 0, level: 0, date: "" });
     
-    // Group by weeks for easier rendering (7 days per column)
+    
     const weeks: any[][] = [];
     for (let i = 0; i < recentData.length; i += 7) {
         weeks.push(recentData.slice(i, i + 7));
     }
 
-    // Helper to get month labels
+    
     const getMonthLabels = () => {
         const labels: { name: string; index: number }[] = [];
         let currentMonth = -1;
@@ -35,7 +35,7 @@ export function ActivityHeatmap({ data, total }: ActivityHeatmapProps) {
             const date = new Date(firstDay.date);
             const month = date.getMonth();
             
-            // Show label if it's a new month and we have space (skip first week if it starts late in month)
+            
             if (month !== currentMonth) {
                 labels.push({ name: date.toLocaleString('default', { month: 'short' }), index: weekIndex });
                 currentMonth = month;
@@ -70,13 +70,13 @@ export function ActivityHeatmap({ data, total }: ActivityHeatmapProps) {
 
       <div className="flex-1 flex flex-col items-center justify-center w-full overflow-x-auto">
         <div className="flex flex-col gap-1 min-w-max">
-            {/* Month Labels */}
+            { }
             <div className="flex text-[10px] text-neutral-500 mb-1 relative h-4">
                 {monthLabels.map((label, i) => (
                     <span 
                         key={i} 
                         className="absolute"
-                        style={{ left: `${label.index * 14}px` }} // 14px approx width of week col (10px + gap)
+                        style={{ left: `${label.index * 14}px` }} 
                     >
                         {label.name}
                     </span>
@@ -84,14 +84,14 @@ export function ActivityHeatmap({ data, total }: ActivityHeatmapProps) {
             </div>
 
             <div className="flex gap-2">
-                {/* Day Labels */}
+                { }
                 <div className="flex flex-col justify-between text-[9px] text-neutral-600 pb-2 h-[88px] leading-3 py-[2px]">
                     <span>Mon</span>
                     <span>Wed</span>
                     <span>Fri</span>
                 </div>
 
-                {/* Grid */}
+                { }
                 {data ? (
                     <div className="flex gap-[3px]">
                         {weeks.map((week, wIndex) => (
