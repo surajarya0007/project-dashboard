@@ -13,7 +13,11 @@ export function ProfileView() {
         <div className="md:col-span-1">
           <GlassCard className="p-6">
             <div className="flex flex-col items-center">
-              <div className="h-24 w-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg" />
+              <img 
+                src="/profile.jpg" 
+                alt="Profile" 
+                className="h-24 w-24 rounded-full object-cover border-2 border-white/10 shadow-lg"
+              />
               <h2 className="mt-4 text-xl font-bold text-white">Suraj</h2>
               <p className="text-sm text-neutral-400">Full Stack Developer</p>
               

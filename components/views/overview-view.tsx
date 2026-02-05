@@ -1,50 +1,118 @@
-import { GlassCard } from "@/components/ui/glass-card";
+"use client";
+
+import { ActivityHeatmap } from "@/components/overview/activity-heatmap";
+import { GithubVitals } from "@/components/overview/github-vitals";
+import { IdentityCard } from "@/components/overview/identity-card";
+import { TerminalWidget } from "@/components/overview/terminal-widget";
+import { 
+    getGithubProfile, 
+    getGithubRepos, 
+    getGithubEvents, 
+    getGithubContributions,
+    processLanguageData, 
+    GithubProfile, 
+    GithubEvent, 
+    GithubRepo,
+    GithubContributionDay 
+} from "@/lib/github";
+import { useEffect, useState } from "react";
 
 export function OverviewView() {
+  const [profile, setProfile] = useState<GithubProfile | null>(null);
+  const [languageData, setLanguageData] = useState<{ name: string; value: number }[]>([]);
+  const [commits, setCommits] = useState<{ message: string; time: string }[]>([]);
+  const [totalCommits, setTotalCommits] = useState(0);
+  const [heatmapData, setHeatmapData] = useState<GithubContributionDay[]>([]);
+  const [publicRepos, setPublicRepos] = useState(0); 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [profileData, reposData, eventsData, contributionsData] = await Promise.all([
+          getGithubProfile(),
+          getGithubRepos(),
+          getGithubEvents(),
+          getGithubContributions()
+        ]);
+
+        if (profileData) setProfile(profileData);
+        if (reposData) {
+            setLanguageData(processLanguageData(reposData));
+            setPublicRepos(reposData.length);
+        }
+        
+        if (eventsData) {
+            // Process events for ticker
+            const pushEvents = eventsData.filter((e: GithubEvent) => e.type === "PushEvent");
+            const recentCommits = pushEvents.flatMap((e: GithubEvent) => 
+                e.payload.commits?.map(c => ({
+                    message: c.message,
+                    time: new Date(e.created_at).toLocaleDateString()
+                })) || []
+            ).slice(0, 5);
+            setCommits(recentCommits);
+        }
+
+        if (contributionsData) {
+            setHeatmapData(contributionsData.contributions);
+            // Sum of commits from the last year total provided by API
+            const lastYearTotal = Object.values(contributionsData.total).reduce((a, b) => a + b, 0); 
+            // The API returns { "2024": 123, "lastYear": 456 }. "lastYear" is what we want usually or current year.
+            setTotalCommits(contributionsData.total.lastYear || lastYearTotal);
+        }
+
+      } catch (error) {
+        console.error("Failed to fetch GitHub data", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <div className="space-y-6">
-      <div className="text-center md:text-left">
+      <div className="text-center md:text-left mb-8">
         <h1 className="text-3xl font-bold text-white">Overview</h1>
-        <p className="mt-2 text-neutral-400">Welcome to your dashboard</p>
+        <p className="mt-2 text-neutral-400">Engineering Metrics & Performance</p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
-        <GlassCard className="p-6">
-          <div className="text-sm font-medium text-neutral-400">Total Projects</div>
-          <div className="mt-2 text-3xl font-bold text-white">12</div>
-          <div className="mt-1 text-xs text-neutral-500">+2 from last month</div>
-        </GlassCard>
-        <GlassCard className="p-6">
-          <div className="text-sm font-medium text-neutral-400">Competitions</div>
-          <div className="mt-2 text-3xl font-bold text-white">8</div>
-          <div className="mt-1 text-xs text-neutral-500">3 active</div>
-        </GlassCard>
-        <GlassCard className="p-6">
-          <div className="text-sm font-medium text-neutral-400">Profile Views</div>
-          <div className="mt-2 text-3xl font-bold text-white">1,234</div>
-          <div className="mt-1 text-xs text-neutral-500">+18% this week</div>
-        </GlassCard>
-      </div>
-
-      <GlassCard className="p-6">
-        <h2 className="text-lg font-semibold text-white">Recent Activity</h2>
-        <div className="mt-4 space-y-4">
-          <div className="flex items-center gap-4">
-            <div className="h-2 w-2 rounded-full bg-green-500" />
-            <div className="flex-1">
-              <div className="text-sm font-medium text-white">New project created</div>
-              <div className="text-xs text-neutral-500">2 hours ago</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="h-2 w-2 rounded-full bg-blue-500" />
-            <div className="flex-1">
-              <div className="text-sm font-medium text-white">Joined a competition</div>
-              <div className="text-xs text-neutral-500">1 day ago</div>
-            </div>
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Left Column: Profile (Spans 2 rows) */}
+        <div className="md:col-span-1 md:row-span-2 h-full min-h-[500px]">
+            <IdentityCard 
+                name={profile?.name || "Suraj"}
+                bio={profile?.bio || "Full Stack Engineer"}
+                avatarUrl="/profile.jpg"
+                profileUrl={profile?.html_url}
+            />
         </div>
-      </GlassCard>
+
+        {/* Right Column Top: Vitals */}
+        <div className="md:col-span-2 h-[280px]">
+            <GithubVitals 
+                languageData={languageData.length > 0 ? languageData : undefined}
+                commits={commits}
+                totalCommits={totalCommits}
+                publicRepos={publicRepos || profile?.public_repos}
+            />
+        </div>
+
+        {/* Right Column Bottom: Heatmap */}
+        <div className="md:col-span-2 h-[200px]">
+             <ActivityHeatmap 
+                data={heatmapData} 
+                total={totalCommits}
+             />
+        </div>
+
+        {/* Row 3: Terminal */}
+        <div className="md:col-span-3 h-[300px]">
+            <TerminalWidget />
+        </div>
+      </div>
     </div>
   );
 }
