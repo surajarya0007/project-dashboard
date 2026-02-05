@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Home, Layout, Trophy, User, X, Menu } from "lucide-react";
+import { Home, Layout, Trophy, User, X, Menu, Briefcase } from "lucide-react";
 import { useState } from "react";
 
 interface SidebarProps {
@@ -12,7 +12,7 @@ interface SidebarProps {
 const navItems = [
   { id: "overview", label: "Overview", icon: Home },
   { id: "projects", label: "Projects", icon: Layout },
-  { id: "competition", label: "Competition", icon: Trophy },
+  { id: "experience", label: "Experience", icon: Briefcase },
   { id: "profile", label: "Profile", icon: User },
 ];
 

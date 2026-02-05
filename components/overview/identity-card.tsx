@@ -9,9 +9,10 @@ interface IdentityCardProps {
   bio?: string;
   avatarUrl?: string;
   profileUrl?: string;
+  resumeUrl?: string;
 }
 
-export function IdentityCard({ name = "Suraj", bio = "Full Stack Engineer", avatarUrl, profileUrl }: IdentityCardProps) {
+export function IdentityCard({ name = "Suraj", bio = "Full Stack Engineer", avatarUrl, profileUrl, resumeUrl }: IdentityCardProps) {
   return (
     <GlassCard className="p-6 h-full flex flex-col items-center justify-center text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent opacity-50" />
@@ -28,10 +29,23 @@ export function IdentityCard({ name = "Suraj", bio = "Full Stack Engineer", avat
         <p className="text-neutral-400 text-base mb-8 px-6 line-clamp-3 leading-relaxed">{bio}</p>
         
         <div className="flex gap-3">
-            <button className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-neutral-200 transition-colors text-base shadow-lg hover:shadow-xl hover:scale-105 transform duration-200">
-                <Download className="h-4 w-4" />
-                Resume
-            </button>
+            {resumeUrl ? (
+                <a 
+                    href={resumeUrl}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-neutral-200 transition-colors text-base shadow-lg hover:shadow-xl hover:scale-105 transform duration-200"
+                >
+                    <Download className="h-4 w-4" />
+                    Resume
+                </a>
+            ) : (
+                <button className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-neutral-200 transition-colors text-base shadow-lg hover:shadow-xl hover:scale-105 transform duration-200">
+                    <Download className="h-4 w-4" />
+                    Resume
+                </button>
+            )}
+            
              {profileUrl && (
                 <a href={profileUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-full font-bold hover:bg-white/20 transition-colors text-base shadow-lg hover:shadow-xl hover:scale-105 transform duration-200">
                     GitHub

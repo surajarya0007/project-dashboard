@@ -87,6 +87,7 @@ export function OverviewView() {
                 bio={profile?.bio || "Full Stack Engineer"}
                 avatarUrl="/profile.jpg"
                 profileUrl={profile?.html_url}
+                resumeUrl="https://drive.google.com/file/d/1Rg6jn15cQXHk06wW0U848LLnprFx9GiO/view?usp=sharing"
             />
         </div>
 

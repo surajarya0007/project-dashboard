@@ -3,7 +3,7 @@
 import { AppShell } from "@/components/layout/app-shell";
 import { OverviewView } from "@/components/views/overview-view";
 import { ProjectsView } from "@/components/views/projects-view";
-import { CompetitionView } from "@/components/views/competition-view";
+import { ExperienceView } from "@/components/views/experience-view";
 import { ProfileView } from "@/components/views/profile-view";
 import { Particles } from "@/components/background/particle-background";
 import { useState } from "react";
@@ -17,8 +17,8 @@ export default function Home() {
         return <OverviewView />;
       case "projects":
         return <ProjectsView />;
-      case "competition":
-        return <CompetitionView />;
+      case "experience":
+        return <ExperienceView />;
       case "profile":
         return <ProfileView />;
       default:
