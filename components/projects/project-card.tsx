@@ -35,7 +35,9 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
 
         <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
-          <h3 className="text-xl font-bold text-white font-heading">{project.name}</h3>
+          <h3 className="text-xl font-bold text-white font-heading">
+            {project.name}
+          </h3>
           <div className="flex space-x-2">
             {project.github && (
               <a
@@ -67,7 +69,9 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
 
       {}
       <div className="p-6 flex-grow flex flex-col relative overflow-hidden">
-        <div className="mb-2 text-sm text-neutral-400 font-code">{project.date}</div>
+        <div className="mb-2 text-sm text-neutral-400 font-code">
+          {project.date}
+        </div>
         <p className="text-neutral-300 mb-4 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
           {project.description}
         </p>
@@ -92,13 +96,13 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
             {project.tech.slice(0, 4).map((tech, idx) => (
               <span
                 key={idx}
-                className="font-code text-xs font-medium border border-blue-500/20 text-blue-300 py-1 px-2.5 rounded-md"
+                className="font-code text-xs font-medium bg-pink-500/[0.06] border border-purple-500/20 text-purple-200 py-1 px-2.5 rounded-xl hover:border-purple-400/40 hover:text-purple-300 transition-all duration-200"
               >
                 {tech}
               </span>
             ))}
             {project.tech.length > 4 && (
-              <span className="text-xs bg-white/10 backdrop-blur-sm border border-white/10 text-white py-1 px-3 rounded-full">
+              <span className="font-code text-xs font-medium bg-white/[0.03] border border-white/[0.06] text-neutral-400 py-1 px-2.5 rounded-xl">
                 +{project.tech.length - 4} more
               </span>
             )}
