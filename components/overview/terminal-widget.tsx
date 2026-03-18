@@ -72,7 +72,7 @@ export function TerminalWidget() {
         </div>
       </div>
 
-      <div className="flex-1 p-4 overflow-y-auto text-sm space-y-2 scrollbar-hide" ref={scrollRef}>
+      <div className="flex-1 p-4 overflow-y-auto text-sm space-y-2" ref={scrollRef}>
         {history.map((msg, i) => (
              <div key={i} className={`${msg.type === 'input' ? 'text-white' : msg.type === 'system' ? 'text-blue-400' : 'text-neutral-300'} whitespace-pre-wrap`}>
                 {msg.type === 'input' && <span className="text-green-500 mr-2">$</span>}

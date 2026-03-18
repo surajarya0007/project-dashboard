@@ -17,8 +17,10 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
       className="project-card relative rounded-xl overflow-hidden backdrop-blur-md saturate-200 bg-gradient-to-br from-white/5 to-white/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_0_0_1px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(207,0,93,0.4)] transition-all duration-500 flex flex-col h-[450px] group cursor-pointer"
       whileHover={{
         y: -10,
+        scale: 1.02,
         transition: { duration: 0.3 },
       }}
+      whileTap={{ scale: 0.98 }}
       onClick={onClick}
     >
       { }

@@ -28,7 +28,7 @@ export function GlassCard({ children, className, gradient = false, ...props }: G
       {...props}
     >
       { }
-      <div className="relative z-10">
+      <div className={cn("relative z-10", className?.includes("h-full") && "h-full", className?.includes("flex") && "flex flex-col")}>
         {children}
       </div>
     </div>

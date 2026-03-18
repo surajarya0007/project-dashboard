@@ -1,5 +1,5 @@
 export interface CodingStats {
-  platform: 'LeetCode' | 'CodeChef' | 'GeeksForGeeks' | 'Codeforces';
+  platform: 'LeetCode' | 'Codeforces';
   username: string;
   solved: number;
   rating?: number | string;
@@ -77,31 +77,6 @@ export async function fetchLeetCodeStats(username: string): Promise<CodingStats 
   });
 }
 
-export async function fetchCodeChefStats(username: string): Promise<CodingStats | null> {
-   return fetchWithCache(`codechef_${username}`, async () => {
-    try {
-      const res = await fetch(`/api/codechef?username=${username}`);
-      const data = await res.json();
-      
-      if (data.error) return null;
-
-      return {
-        platform: 'CodeChef',
-        username,
-        solved: data.problemsSolved || 0,
-        rating: data.highestRating,
-        globalRank: data.ranking,
-        contests: data.contests,
-        achievements: data.achievements,
-        profileUrl: `https://www.codechef.com/users/${username}`
-      };
-    } catch (e) {
-      console.error("Failed to fetch CodeChef stats", e);
-      return null;
-    }
-   });
-}
-
 export async function fetchCodeforcesStats(username: string): Promise<CodingStats | null> {
   return fetchWithCache(`codeforces_${username}`, async () => {
     try {
@@ -126,28 +101,3 @@ export async function fetchCodeforcesStats(username: string): Promise<CodingStat
     }
   });
 }
-
-export async function fetchGFGStats(username: string): Promise<CodingStats | null> {
-    return fetchWithCache(`gfg_${username}`, async () => {
-      try {
-        const res = await fetch(`/api/geeksforgeeks?username=${username}`);
-        const data = await res.json();
-        
-        if (data.error) return null;
-    
-        return {
-          platform: 'GeeksForGeeks',
-          username,
-          solved: data.problemsSolved || 0,
-          rating: data.highestRating,
-          globalRank: data.ranking,
-          contests: data.contests,
-          achievements: data.achievements,
-          profileUrl: `https://auth.geeksforgeeks.org/user/${username}/`
-        };
-      } catch (e) {
-        console.error("Failed to fetch GFG stats", e);
-        return null;
-      }
-    });
-  }

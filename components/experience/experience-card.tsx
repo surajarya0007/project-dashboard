@@ -3,13 +3,20 @@ import { ExperienceItem } from "@/data/experience";
 import { Briefcase, Calendar, ExternalLink, Linkedin } from "lucide-react";
 import Image from "next/image";
 
+import { motion } from "framer-motion";
+
 interface ExperienceCardProps {
     experience: ExperienceItem;
 }
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
     return (
-        <GlassCard className="p-6 transition-all duration-300 hover:scale-[1.01] hover:bg-white/10 group">
+        <motion.div
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
+            transition={{ duration: 0.2 }}
+        >
+            <GlassCard className="p-6 transition-all duration-300 hover:bg-white/10 group">
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
                 <div className="flex gap-4">
                     {experience.logo ? (
@@ -101,5 +108,6 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
                 </div>
             </div>
         </GlassCard>
-    );
+    </motion.div>
+  );
 }

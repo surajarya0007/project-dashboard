@@ -35,7 +35,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         onClick={onClose}
       >
         <motion.div
-          className="backdrop-blur-xl saturate-200 bg-gradient-to-b from-black/60 to-[#cf005d]/40 rounded-xl overflow-hidden max-w-6xl w-full max-h-[95vh] md:max-h-[90vh] flex flex-col shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_0_0_1px_rgba(255,255,255,0.1)]"
+          className="backdrop-blur-xl saturate-200 bg-gradient-to-b from-black/60 to-[#cf005d]/40 rounded-xl overflow-hidden max-w-6xl w-full h-[85vh] md:h-[80vh] flex flex-col shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_0_0_1px_rgba(255,255,255,0.1)]"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}

@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Home, Layout, Trophy, User, X, Menu, Briefcase } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface SidebarProps {
   currentView: string;
@@ -10,7 +11,6 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { id: "overview", label: "Overview", icon: Home },
   { id: "projects", label: "Projects", icon: Layout },
   { id: "experience", label: "Experience", icon: Briefcase },
   { id: "profile", label: "Profile", icon: User },
@@ -26,8 +26,9 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
 
   return (
     <>
-      { }
-      <button
+      {/* Mobile Menu Toggle */}
+      <motion.button
+        whileTap={{ scale: 0.9 }}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         className="fixed top-4 left-4 z-50 p-2 bg-neutral-800 rounded-lg md:hidden"
       >
@@ -36,17 +37,20 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
         ) : (
           <Menu className="w-6 h-6 text-white" />
         )}
-      </button>
+      </motion.button>
 
-      { }
+      {/* Mobile Overlay */}
       {isMobileMenuOpen && (
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
 
-      { }
+      {/* Sidebar */}
       <aside
         className={cn(
           "fixed left-0 top-0 z-40 h-screen w-64 border-r border-neutral-800 bg-black transition-transform duration-300",
@@ -54,7 +58,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full" 
         )}
       >
-        { }
+        {/* Logo */}
         <div className="flex h-16 items-center border-b border-neutral-800 px-6">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-black to-[#cf005d]" />
@@ -62,11 +66,13 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
           </div>
         </div>
 
-        { }
+        {/* Navigation */}
         <nav className="space-y-1 p-4">
           {navItems.map((item) => (
-            <button
+            <motion.button
               key={item.id}
+              whileHover={{ x: 4 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => handleNavigation(item.id)}
               className={cn(
                 "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
@@ -77,13 +83,15 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
             >
               <item.icon className="h-5 w-5" />
               {item.label}
-            </button>
+            </motion.button>
           ))}
         </nav>
 
-        { }
+        {/* Footer / User Profile shortcut */}
         <div className="absolute bottom-0 left-0 right-0 border-t border-neutral-800 p-4">
-          <a
+          <motion.a
+            whileHover={{ x: 4 }}
+            whileTap={{ scale: 0.98 }}
             href="https://suraj-cyan.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
@@ -94,7 +102,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
               <span className="text-sm font-medium text-white">Suraj</span>
               <span className="text-xs text-neutral-500">Developer</span>
             </div>
-          </a>
+          </motion.a>
         </div>
       </aside>
     </>

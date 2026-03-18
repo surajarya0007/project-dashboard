@@ -1,7 +1,7 @@
 "use client";
 
+import { motion, AnimatePresence } from "framer-motion";
 import { AppShell } from "@/components/layout/app-shell";
-import { OverviewView } from "@/components/views/overview-view";
 import { ProjectsView } from "@/components/views/projects-view";
 import { ExperienceView } from "@/components/views/experience-view";
 import { ProfileView } from "@/components/views/profile-view";
@@ -13,25 +13,22 @@ interface HomeClientProps {
   initialStats?: {
     leetCode: CodingStats | null;
     codeforces: CodingStats | null;
-    gfg: CodingStats | null;
   };
 }
 
 export function HomeClient({ initialStats }: HomeClientProps) {
-  const [currentView, setCurrentView] = useState("overview");
+  const [currentView, setCurrentView] = useState("projects");
 
   const renderView = () => {
     switch (currentView) {
-      case "overview":
-        return <OverviewView />;
       case "projects":
-        return <ProjectsView />;
+        return <ProjectsView key="projects" />;
       case "experience":
-        return <ExperienceView />;
+        return <ExperienceView key="experience" />;
       case "profile":
-        return <ProfileView initialStats={initialStats} />;
+        return <ProfileView key="profile" initialStats={initialStats} />;
       default:
-        return <OverviewView />;
+        return <ProjectsView key="projects" />;
     }
   };
 
@@ -49,7 +46,17 @@ export function HomeClient({ initialStats }: HomeClientProps) {
         sizeRandomness={3}
       />
       <AppShell currentView={currentView} onNavigate={setCurrentView}>
-        {renderView()}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentView}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {renderView()}
+          </motion.div>
+        </AnimatePresence>
       </AppShell>
     </>
   );
