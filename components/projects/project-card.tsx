@@ -23,7 +23,7 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
     >
-      { }
+      {}
       <div className="relative h-48 overflow-hidden transition-all duration-500 group-hover:h-24">
         <Image
           src={project.images[0] || "/placeholder.svg"}
@@ -35,7 +35,7 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
 
         <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
-          <h3 className="text-xl font-bold text-white">{project.name}</h3>
+          <h3 className="text-xl font-bold text-white font-heading">{project.name}</h3>
           <div className="flex space-x-2">
             {project.github && (
               <a
@@ -65,28 +65,35 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
         </div>
       </div>
 
-      { }
+      {}
       <div className="p-6 flex-grow flex flex-col relative overflow-hidden">
-        <div className="mb-2 text-sm text-gray-400">{project.date}</div>
-        <p className="text-gray-300 mb-4 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+        <div className="mb-2 text-sm text-neutral-400 font-code">{project.date}</div>
+        <p className="text-neutral-300 mb-4 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
           {project.description}
         </p>
 
-        { }
+        {}
         <div className="absolute inset-0 p-6 pt-10 bg-black/90 translate-y-full group-hover:translate-y-0 transition-transform duration-500 overflow-y-auto max-h-full">
-          <p className="text-gray-300 text-sm mb-4">{project.longDescription}</p>
-          <ul className="space-y-2 text-gray-400 text-sm list-disc list-inside mb-4">
+          <p className="text-neutral-300 text-sm mb-4">
+            {project.longDescription}
+          </p>
+          <ul className="space-y-2 text-neutral-400 text-sm list-disc list-inside mb-4">
             {project.points.slice(0, 3).map((point, idx) => (
               <li key={idx}>{point}</li>
             ))}
           </ul>
-          <p className="text-[#cf005d] text-sm font-medium">Click to view full details</p>
+          <p className="text-[#cf005d] text-sm font-medium font-ui">
+            Click to view full details
+          </p>
         </div>
 
         <div className="mt-auto">
           <div className="flex flex-wrap gap-2">
             {project.tech.slice(0, 4).map((tech, idx) => (
-              <span key={idx} className="text-xs bg-white/10 backdrop-blur-sm border border-white/10 text-pink-200 py-1 px-3 rounded-full">
+              <span
+                key={idx}
+                className="font-code text-xs font-medium border border-blue-500/20 text-blue-300 py-1 px-2.5 rounded-md"
+              >
                 {tech}
               </span>
             ))}

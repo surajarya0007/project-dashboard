@@ -12,6 +12,33 @@ export interface ExperienceItem {
 
 export const EXPERIENCES: ExperienceItem[] = [
   {
+    id: "xelronai",
+    company: "XelronAI",
+    role: "Software Engineer 1",
+    period: "Feb 2026 – Mar 2026",
+    techStack: [
+      "Python",
+      "FastAPI",
+      "AI Agents tuning",
+      "LLM tuning",
+      "AI evaluation",
+      "PostgreSQL",
+      "Docker",
+      "Git",
+      "GitHub",
+    ],
+    description: [
+      "**AI Agents tuning:** Tuned AI agents to improve performance and accuracy and comparing with other Sonnet 4.6.",
+      "**LLM tuning:** Tuned LLMs to improve performance and accuracy and comparing with other Sonnet 4o models.",
+      "**AI evaluation:** Evaluated AI agents to improve performance and accuracy and comparing with other Sonnet 4o models.",
+      "**Git:** Used Git to version control the application.",
+      "**GitHub:** Used GitHub to host the application and GitLab to host the application.",
+    ],
+    logo: "/logos/xelronai.png",
+    website: "https://www.xelron.in/",
+    linkedin: "https://www.linkedin.com/company/xelron-ai/",
+  },
+  {
     id: "goquant",
     company: "GoQuant",
     role: "Full Stack Developer",
@@ -24,26 +51,33 @@ export const EXPERIENCES: ExperienceItem[] = [
       "**Performance Optimization:** Monitor, troubleshoot, and optimize front-end performance for low latency and smooth operation.",
       "**Design Collaboration:** Work closely with designers to implement and refine visual elements, maintaining consistency with brand guidelines.",
       "**Testing and Debugging:** Perform rigorous testing across browsers and devices, identifying and resolving bugs proactively.",
-      "**Documentation:** Maintain clear and comprehensive documentation of front-end systems, code, and processes."
+      "**Documentation:** Maintain clear and comprehensive documentation of front-end systems, code, and processes.",
     ],
     logo: "/logos/goquant.png",
     website: "https://goquant.io/",
-    linkedin: "https://www.linkedin.com/company/goquant/"
+    linkedin: "https://www.linkedin.com/company/goquant/",
   },
   {
     id: "tcs",
     company: "Tata Consultancy Services",
     role: "Software Engineer Intern",
     period: "Feb 2024 – Jul 2024",
-    techStack: ["Next.js", "Node.js", "Express", "Tailwind", "MongoDB", "Framer Motion"],
+    techStack: [
+      "Next.js",
+      "Node.js",
+      "Express",
+      "Tailwind",
+      "MongoDB",
+      "Framer Motion",
+    ],
     description: [
       "Developed and maintained scalable client projects using **Next.js**.",
       "Collaborated with cross-functional teams to optimize **MongoDB performance**.",
-      "Integrated dynamic animations with **Framer Motion** to elevate user experience."
+      "Integrated dynamic animations with **Framer Motion** to elevate user experience.",
     ],
     logo: "/logos/tcs.png",
     website: "https://www.tcs.com/",
-    linkedin: "https://www.linkedin.com/company/tata-consultancy-services/"
+    linkedin: "https://www.linkedin.com/company/tata-consultancy-services/",
   },
   {
     id: "cadence",
@@ -53,10 +87,10 @@ export const EXPERIENCES: ExperienceItem[] = [
     techStack: ["Node.js", "Express", "MySQL", "React Native"],
     description: [
       "Refined the **website frontend** to deliver a modern, user-centric interface.",
-      "Managed and updated the **product verification module** to ensure data accuracy."
+      "Managed and updated the **product verification module** to ensure data accuracy.",
     ],
     logo: "/logos/cadence.png",
     website: "https://www.cadence.com/en_US/home.html",
-    linkedin: "https://www.linkedin.com/company/cadence/"
-  }
+    linkedin: "https://www.linkedin.com/company/cadence/",
+  },
 ];

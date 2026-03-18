@@ -62,7 +62,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
         <div className="flex h-16 items-center border-b border-neutral-800 px-6">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-black to-[#cf005d]" />
-            <span className="text-lg font-bold text-white">Dashboard</span>
+            <span className="text-lg font-bold text-white font-heading">Dashboard</span>
           </div>
         </div>
 
@@ -75,7 +75,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
               whileTap={{ scale: 0.98 }}
               onClick={() => handleNavigation(item.id)}
               className={cn(
-                "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                "font-ui flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                 currentView === item.id
                   ? "bg-gradient-to-r from-black to-[#cf005d] text-white shadow-lg"
                   : "text-neutral-400 hover:bg-neutral-900 hover:text-white"
@@ -99,8 +99,8 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
           >
             <div className="h-10 w-10 rounded-full bg-gradient-to-br from-black to-[#cf005d]" />
             <div className="flex flex-col">
-              <span className="text-sm font-medium text-white">Suraj</span>
-              <span className="text-xs text-neutral-500">Developer</span>
+              <span className="text-sm font-medium text-white font-ui">Suraj</span>
+              <span className="text-xs text-neutral-500 font-code">Developer</span>
             </div>
           </motion.a>
         </div>
