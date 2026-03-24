@@ -87,11 +87,10 @@ export function ProjectGrid() {
         initial="hidden"
         animate="show"
       >
-        {filteredProjects.map((project, index) => (
+        {filteredProjects.map((project) => (
           <motion.div key={project.name} variants={item}>
             <ProjectCard
               project={project}
-              index={index}
               onClick={() => setSelectedProject(project)}
             />
           </motion.div>

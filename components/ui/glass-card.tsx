@@ -9,7 +9,7 @@ interface GlassCardProps extends HTMLAttributes<HTMLDivElement> {
   gradient?: boolean;
 }
 
-export function GlassCard({ children, className, gradient = false, ...props }: GlassCardProps) {
+export function GlassCard({ children, className, ...props }: GlassCardProps) {
   return (
     <div
       className={cn(

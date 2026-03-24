@@ -1,17 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { Project } from "@/data/projects";
 
 interface ProjectCardProps {
   project: Project;
-  index: number;
   onClick: () => void;
 }
 
-export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
+export function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
     <motion.div
       className="project-card relative rounded-xl overflow-hidden backdrop-blur-md saturate-200 bg-gradient-to-br from-white/5 to-white/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_0_0_1px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(207,0,93,0.4)] transition-all duration-500 flex flex-col h-[450px] group cursor-pointer"
@@ -39,18 +38,6 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
             {project.name}
           </h3>
           <div className="flex space-x-2">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300"
-                aria-label={`GitHub repository for ${project.name}`}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Github className="w-4 h-4 text-white" />
-              </a>
-            )}
             {project.link && (
               <a
                 href={project.link}

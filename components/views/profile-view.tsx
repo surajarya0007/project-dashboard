@@ -3,6 +3,7 @@
 import { GlassCard } from "@/components/ui/glass-card";
 import { Github, Linkedin, Mail, MapPin, FileText } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { 
     CodingStats, 
     fetchLeetCodeStats, 
@@ -84,9 +85,11 @@ export function ProfileView({ initialStats }: ProfileViewProps) {
               <div className="relative z-10 w-full flex flex-col items-center">
                   <div className="relative mb-6">
                       <div className="absolute inset-0 bg-blue-500/20 blur-xl rounded-full" />
-                      <img 
+                      <Image 
                         src="/profile.jpg" 
                         alt="Profile" 
+                        width={128}
+                        height={128}
                         className="relative h-32 w-32 rounded-full object-cover border-4 border-white/10 shadow-2xl"
                       />
                   </div>

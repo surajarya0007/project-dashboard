@@ -1,7 +1,6 @@
 export interface Project {
   name: string;
   link?: string;
-  github?: string;
   date: string;
   description: string;
   longDescription: string;
@@ -23,7 +22,6 @@ export const projects: Project[] = [
     {
     name: "CryptoMarket",
     link: "https://cryptoorderbook-steel.vercel.app/",
-    github: "https://github.com/surajarya0007/goQuant",
     date: "Feb '25",
     description: "Dashboard that streams real-time cryptocurrency order book data with some indicators.",
     longDescription:
@@ -48,13 +46,12 @@ export const projects: Project[] = [
     category: "dbms",
   },
     {
-    name: "TeeGenius",
-    link: "https://github.com/Prasoon2050/Stage0",
-    github: "https://github.com/Prasoon2050/Stage0",
+    name: "AiTee",
+    link: "https://aitee-nine.vercel.app/",
     date: "July '24",
     description: "E-commerce platform for custom-printed t-shirts with AI integration for design generation.",
     longDescription:
-      "TeeGenius revolutionizes the custom t-shirt market by combining e-commerce functionality with AI-powered design generation. Users can create unique designs using text prompts or upload their own artwork, preview them on virtual models, and order high-quality printed products.",
+      "AiTee revolutionizes the custom t-shirt market by combining e-commerce functionality with AI-powered design generation. Users can create unique designs using text prompts or upload their own artwork, preview them on virtual models, and order high-quality printed products.",
     points: [
       "Built a full-stack application using Next.js, Tailwind CSS, Node.js, MongoDB, and JWT authentication.",
       "Enabled users to purchase and sell custom-designed t-shirts.",
@@ -62,7 +59,7 @@ export const projects: Project[] = [
       "Implemented a virtual try-on feature using 3D modeling.",
       "Created a marketplace for designers to sell their templates.",
     ],
-    images: ["/projects/3.jpg", "/projects/3-2.jpg", "/projects/3-3.jpg"],
+    images: ["/projects/3-2.jpg", "/projects/3.jpg", "/projects/3-3.jpg"],
     video: "/videos/demo2.mp4",
     tech: ["Next.js", "React.js", "Node.js", "Open API", "Framer-motion", "Fabric.js", "react-three"],
     featured: true,
@@ -77,7 +74,6 @@ export const projects: Project[] = [
     {
     name: "You and Me",
     link: "https://you-and-me-jet.vercel.app/",
-    github: "https://github.com/username/you-and-me",
     date: "Feb '24",
     description: "Social media platform for wedding memories with guest authentication and photo sharing capabilities.",
     longDescription:
@@ -104,7 +100,6 @@ export const projects: Project[] = [
   {
     name: "API_Security_Shield",
     link: "https://management-fontend.vercel.app/Login",
-    github: "https://github.com/surajarya0007/management-fontend",
     date: "Aug '24",
     description:
       "Comprehensive API management system focused on real-time API inventory, security assessments, and role-based data access.",
@@ -132,7 +127,6 @@ export const projects: Project[] = [
   {
     name: "3D Portfolio Website",
     link: "https://port-taupe-mu.vercel.app/",
-    github: "https://github.com/surajarya0007/port",
     date: "Jun '22",
     description: "Interactive 3D portfolio website showcasing projects and skills with immersive user experience.",
     longDescription:
@@ -158,7 +152,6 @@ export const projects: Project[] = [
   },
     {
     name: "NFT Market Place",
-    github: "https://github.com/username/nft-marketplace",
     date: "May '23",
     description: "Decentralized NFT marketplace for minting and trading digital assets using blockchain technology.",
     longDescription:

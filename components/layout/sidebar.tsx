@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Home, Layout, Trophy, User, X, Menu, Briefcase } from "lucide-react";
+import { Layout, User, X, Menu, Briefcase } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
