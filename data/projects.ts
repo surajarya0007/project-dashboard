@@ -20,6 +20,32 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+    name: "India Reports",
+    link: "https://india-report-frontend-qzqmxyljqa-el.a.run.app/",
+    date: "Jun '26",
+    description: "Fully autonomous, self-updating news platform fueled by an event-driven pipeline and Gemini 1.5 Flash.",
+    longDescription:
+      "India Reports is a fully autonomous, self-updating news aggregator and synthesis platform. It runs on an event-driven pipeline that checks for new articles every 15 minutes, crawls full content using Firecrawl, synthesizes summaries and sentiment metrics using Gemini 1.5 Flash, and caches results in Upstash Redis. Built as a monorepo, it features a Next.js/Tailwind CSS frontend with real-time sentiment filtering and a Node.js/Express/Prisma/PostgreSQL backend fully deployed on Google Cloud Run.",
+    points: [
+      "Built a fully autonomous, event-driven news ingestion pipeline triggered by orchestrated cron jobs.",
+      "Integrated Firecrawl API for extracting clean markdown content from target news articles.",
+      "Leveraged Gemini 1.5 Flash to automatically generate concise summaries, categorization, and sentiment analysis.",
+      "Implemented caching using Upstash Redis to deliver sub-millisecond response times for frontend queries.",
+      "Created a modern, responsive Next.js frontend with Tailwind CSS (v4) featuring a live news ticker and sentiment filters.",
+      "Deployed as independent, Dockerized backend and frontend services on Google Cloud Run.",
+    ],
+    images: ["/projects/7-1.jpeg", "/projects/7-2.jepg"],
+    tech: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Node.js", "Express", "Prisma", "PostgreSQL", "Redis", "Gemini API", "Cloud Run"],
+    featured: true,
+    stats: {
+      developmentTime: "1 month",
+      teamSize: "1 developer",
+      codeLines: "6,000+",
+      deployments: "15+",
+    },
+    category: "ai",
+  },
+    {
     name: "CryptoMarket",
     link: "https://cryptoorderbook-steel.vercel.app/",
     date: "Feb '25",
