@@ -20,12 +20,37 @@ export interface Project {
 
 export const projects: Project[] = [
     {
-    name: "India Reports",
-    link: "https://india-report-frontend-qzqmxyljqa-el.a.run.app/",
+    name: "AskMe",
+    link: "https://askme-app-kappa.vercel.app/",
+    date: "Jul '26",
+    description: "Premium, real-time voice and text conversational assistant web app powered by Google's Gemini Multimodal Live API.",
+    longDescription:
+      "AskMe is a premium, real-time voice and text conversational assistant web application. Powered by Google's Gemini Multimodal Live API, it offers highly responsive voice chats, smart text responses, and persistent conversation history synced with Supabase. Designed with a sleek dark mode theme, it features dynamic CSS transition animations, live caption streaming, and secure OAuth-only user sessions.",
+    points: [
+      "Built a real-time multimodal voice chat session over WebSockets using the Gemini Live API.",
+      "Designed an elegant, dark-themed UI featuring interactive voice-bars, audio waveforms, and live caption streams.",
+      "Implemented session persistence and reload recovery synchronized with Supabase database.",
+      "Integrated Google OAuth for secure, authenticated-only user sessions, ensuring full data isolation.",
+      "Created smooth CSS-based directional message bubble entry animations and glowing microphone indicator states.",
+    ],
+    images: ["/projects/8-1.jpeg", "/projects/8-2.jpeg"],
+    tech: ["React.js", "TypeScript", "Vite", "Vanilla CSS", "Supabase", "Gemini API", "WebSockets"],
+    featured: true,
+    stats: {
+      developmentTime: "2 weeks",
+      teamSize: "1 developer",
+      codeLines: "1,200+",
+      deployments: "10+",
+    },
+    category: "ai",
+  },
+    {
+    name: "Daily News Insights",
+    link: "https://www.dailynewsinsights.com/",
     date: "Jun '26",
     description: "Fully autonomous, self-updating news platform fueled by an event-driven pipeline and Gemini 1.5 Flash.",
     longDescription:
-      "India Reports is a fully autonomous, self-updating news aggregator and synthesis platform. It runs on an event-driven pipeline that checks for new articles every 15 minutes, crawls full content using Firecrawl, synthesizes summaries and sentiment metrics using Gemini 1.5 Flash, and caches results in Upstash Redis. Built as a monorepo, it features a Next.js/Tailwind CSS frontend with real-time sentiment filtering and a Node.js/Express/Prisma/PostgreSQL backend fully deployed on Google Cloud Run.",
+      "Daily News Insights is a fully autonomous, self-updating news aggregator and synthesis platform. It runs on an event-driven pipeline that checks for new articles every 15 minutes, crawls full content using Firecrawl, synthesizes summaries and sentiment metrics using Gemini 1.5 Flash, and caches results in Upstash Redis. Built as a monorepo, it features a Next.js/Tailwind CSS frontend with real-time sentiment filtering and a Node.js/Express/Prisma/PostgreSQL backend fully deployed on Google Cloud Run.",
     points: [
       "Built a fully autonomous, event-driven news ingestion pipeline triggered by orchestrated cron jobs.",
       "Integrated Firecrawl API for extracting clean markdown content from target news articles.",
