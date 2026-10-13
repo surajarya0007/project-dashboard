@@ -46,7 +46,7 @@ export const projects: Project[] = [
   },
     {
     name: "Daily News Insights",
-    link: "https://www.dailynewsinsights.com/",
+    link: "https://daily-news-insights.vercel.app/",
     date: "Jun '26",
     description: "Fully autonomous, self-updating news platform fueled by an event-driven pipeline and Gemini 1.5 Flash.",
     longDescription:
