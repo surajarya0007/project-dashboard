@@ -57,13 +57,13 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
                             href={experience.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="h-16 w-40 relative flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+                            className="h-12 w-auto min-w-12 max-w-[130px] relative flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity flex items-center justify-start self-start"
                         >
-                            <Image 
-                                src={experience.logo} 
-                                alt={experience.company} 
-                                fill 
-                                className="object-contain object-left"
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src={experience.logo}
+                                alt={experience.company}
+                                className="h-12 w-auto max-w-[130px] object-contain rounded-md"
                             />
                         </a>
                     ) : (
